@@ -1,14 +1,14 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[ ]:
+# In[7]:
 
 
 def locate_card(cards,query):
     pass
 
 
-# In[ ]:
+# In[8]:
 
 
 cards = [ 13,11,12,7,4,3,1,0]
@@ -16,20 +16,20 @@ query = 7
 output = 3
 
 
-# In[ ]:
+# In[9]:
 
 
 result = locate_card(cards,query)
 print(result)
 
 
-# In[ ]:
+# In[10]:
 
 
 result == output
 
 
-# In[ ]:
+# In[11]:
 
 
 test = {
@@ -41,19 +41,19 @@ test = {
 }
 
 
-# In[ ]:
+# In[12]:
 
 
 locate_card(**test['input']) == test['output']
 
 
-# In[ ]:
+# In[13]:
 
 
 tests = []
 
 
-# In[ ]:
+# In[14]:
 
 
 tests.append(test)
@@ -67,7 +67,7 @@ tests.append({
 })
 
 
-# In[ ]:
+# In[15]:
 
 
 #cards contain query as the first element
@@ -80,7 +80,7 @@ tests.append({
 })
 
 
-# In[ ]:
+# In[16]:
 
 
 #cards contain only one element ,that is query itself
@@ -93,7 +93,7 @@ tests.append({
 })
 
 
-# In[ ]:
+# In[17]:
 
 
 #cards contain query at the end of the list
@@ -106,7 +106,7 @@ tests.append({
 })
 
 
-# In[ ]:
+# In[18]:
 
 
 #cards does not contain the carry abd we assumne -1 to be the output in all such cases 
@@ -119,7 +119,7 @@ tests.append({
 })
 
 
-# In[ ]:
+# In[19]:
 
 
 #cards is empty
@@ -132,7 +132,7 @@ tests.append({
 })
 
 
-# In[ ]:
+# In[20]:
 
 
 tests.append({
@@ -144,7 +144,7 @@ tests.append({
 })
 
 
-# In[ ]:
+# In[21]:
 
 
 #query can occur multiple times , we expect the function to return the position of the first query
@@ -157,7 +157,7 @@ tests.append({
 })
 
 
-# In[ ]:
+# In[22]:
 
 
 #there can be multiple numbers in cards
@@ -170,13 +170,13 @@ tests.append({
 })
 
 
-# In[ ]:
+# In[23]:
 
 
 tests
 
 
-# In[ ]:
+# In[24]:
 
 
 def locate_card(cards, query):
@@ -193,50 +193,50 @@ def locate_card(cards, query):
 
 
 
-# In[ ]:
+# In[25]:
 
 
 test
 
 
-# In[ ]:
+# In[26]:
 
 
 result = locate_card(test['input']['cards'] , test['input']['query'])
 result
 
 
-# In[ ]:
+# In[27]:
 
 
 result == output
 
 
-# In[ ]:
+# In[28]:
 
 
 get_ipython().system('pip install jovian --upgrade --quiet')
 
 
-# In[ ]:
+# In[29]:
 
 
 from jovian.pythondsa import evaluate_test_case
 
 
-# In[ ]:
+# In[30]:
 
 
 evaluate_test_case(locate_card , test)
 
 
-# In[ ]:
+# In[31]:
 
 
 from jovian.pythondsa import evaluate_test_cases
 
 
-# In[ ]:
+# In[32]:
 
 
 evaluate_test_cases(locate_card , tests)
@@ -298,6 +298,38 @@ tests[6]
 
 import os
 print(os.getcwd())
+
+
+# In[ ]:
+
+
+def locate_card(cards,query):
+    lo,hi = 0,len(cards)-1
+    while lo<=hi:
+        mid = (low+hi)//2
+        mid_number = cards[mid]
+        print('low:', lo , 'high:', hi,'mid:',mid , 'mid_number:',mid_number)
+
+        if mid_number == query:
+            return mid
+        elif mid_number< query:
+            hi = mid - 1
+
+        elif mid_number> query:
+            lo = mid + 1
+
+
+    return -1        
+
+
+
+
+
+
+# In[33]:
+
+
+evaluate_test_cases(locate_card,tests)
 
 
 # In[ ]:
