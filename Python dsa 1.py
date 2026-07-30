@@ -371,8 +371,20 @@ def locate_card(cards,query):
 
 
 
+# In[27]:
+
+
+evaluate_test_case(locate_card,tests[8])
+
+
 # In[ ]:
 
 
-evaluate_test_case(locate_
+
+
+
+# In[ ]:
+
+
+
 
