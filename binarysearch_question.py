@@ -1,14 +1,14 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[4]:
+# In[118]:
 
 
 def count_rotations(nums):
     pass
 
 
-# In[ ]:
+# In[119]:
 
 
 test = {
@@ -19,7 +19,7 @@ test = {
 }
 
 
-# In[24]:
+# In[120]:
 
 
 from timeit import default_timer as timer
@@ -113,19 +113,19 @@ def evaluate_test_cases(function, test_cases, error_only=False, summary_only=Fal
     return results
 
 
-# In[7]:
+# In[121]:
 
 
 evaluate_test_case(count_rotations,test)
 
 
-# In[9]:
+# In[122]:
 
 
 test0 = test
 
 
-# In[38]:
+# In[123]:
 
 
 # A list of size 8 rotated 5 times.
@@ -139,7 +139,7 @@ test1 = {
 }
 
 
-# In[39]:
+# In[124]:
 
 
 # A list of size 10 rotated 7 times.
@@ -152,7 +152,7 @@ test2 = {
 }
 
 
-# In[40]:
+# In[125]:
 
 
 # A list of size n(5)rotated n-1(4) times.
@@ -165,7 +165,7 @@ test3 = {
 }
 
 
-# In[41]:
+# In[126]:
 
 
 #List has 5 items and 5 rotations
@@ -178,7 +178,7 @@ test4 = {
 }
 
 
-# In[42]:
+# In[127]:
 
 
 #Empty list
@@ -191,7 +191,7 @@ test5 = {
 }
 
 
-# In[43]:
+# In[128]:
 
 
 #No rotation
@@ -200,11 +200,11 @@ test6 = {
         'nums': [ 3,4,7,8,9],
 
     },
-    'output':-1
+    'output':0
 }
 
 
-# In[46]:
+# In[129]:
 
 
 #Single element only
@@ -213,23 +213,23 @@ test7 = {
         'nums': [3],
 
     },
-    'output':-1
+    'output':0
 }
 
 
-# In[47]:
+# In[130]:
 
 
 tests = [test0, test1, test2, test3, test3, test5, test6, test7]
 
 
-# In[48]:
+# In[131]:
 
 
 tests
 
 
-# In[50]:
+# In[132]:
 
 
 def count_rotations_linear(nums):
@@ -241,10 +241,40 @@ def count_rotations_linear(nums):
     return -1    
 
 
-# In[52]:
+# In[133]:
 
 
 linear_search_result = evaluate_test_cases(count_rotations_linear,tests)
+
+
+# In[147]:
+
+
+def count_rotations_binary(nums):
+ lo, hi = 0, len(nums) - 1
+
+ if not nums:
+     return -1
+
+
+ if nums[lo] < nums[hi]:
+     return lo
+
+ while lo < hi:
+     mid = (lo + hi) // 2
+
+     if nums[mid] > nums[hi]:
+         lo = mid + 1
+     else:
+         hi = mid
+
+ return lo
+
+
+# In[148]:
+
+
+binary_search_result = evaluate_test_cases(count_rotations_binary,tests)
 
 
 # In[ ]:
