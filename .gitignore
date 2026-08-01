@@ -1,5 +1,4 @@
-﻿.ipynb_checkpoints/
+anaconda_projects/
+.ipynb_checkpoints/
 __pycache__/
-.env
-*.env
-.conda/
+*.pyc
